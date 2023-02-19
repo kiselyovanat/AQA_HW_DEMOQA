@@ -35,9 +35,9 @@ public class FormTest {
         $("#uploadPicture").uploadFromClasspath("kitty.jpg");
         $("#currentAddress").setValue("Some address");
         $("#state").click();
-        $("#react-select-3-option-1").click();
+        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
         $("#city").click();
-        $("#react-select-4-option-1").click();
+        $("#stateCity-wrapper").$(byText("Lucknow")).click();
         $("#submit").click();
 
        $(".modal-body").shouldHave(text("Natalia Kiseleva"), text("kiselevanat@mail.ru"),
