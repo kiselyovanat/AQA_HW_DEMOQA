@@ -12,13 +12,13 @@ public class FormTest {
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
-        //Configuration.holdBrowserOpen = true;
     }
     @Test
     void fillFormTest() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
+
         $("#firstName").setValue("Natalia");
         $("#lastName").setValue("Kiseleva");
         $("#userEmail").setValue("kiselevanat@mail.ru");
