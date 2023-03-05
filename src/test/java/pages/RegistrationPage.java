@@ -2,13 +2,14 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.RegistrationResultModal;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
     private CalendarComponent calendarComponent = new CalendarComponent();
-   // private RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+    private RegistrationResultModal registrationResultModal = new RegistrationResultModal();
     private SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -16,7 +17,12 @@ public class RegistrationPage {
             userEmailInput = $("#userEmail"),
             userNumberInput = $("#userNumber"),
             subjectsInput = $("#subjectsInput"),
-            pictureInput = $("#uploadPicture");
+            pictureInput = $("#uploadPicture"),
+            addressInput = $("#currentAddress"),
+            stateInput = $("#state"),
+            cityInput = $("#city"),
+            submitButton = $("#submit");
+
     public RegistrationPage openPage(){
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
@@ -77,10 +83,49 @@ public class RegistrationPage {
 
         return this;
     }
+
     public RegistrationPage uploadPicture(String filename){
-        pictureInput.uploadFromClasspath("kitty.jpg");
+        pictureInput.uploadFromClasspath(filename);
 
         return this;
     }
 
+    public RegistrationPage setAddress(String value){
+        addressInput.setValue(value);
+
+        return this;
+    }
+
+    public RegistrationPage setState(String value){
+        stateInput.click();
+        stateInput.$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage setCity(String value){
+        cityInput.click();
+        cityInput.$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage submit(){
+        submitButton.scrollIntoView(false);
+        submitButton.click();
+
+        return this;
+    }
+
+    public RegistrationPage verifyResultsModalAppears() {
+        registrationResultModal.verifyModalAppears();
+
+        return this;
+    }
+
+    public RegistrationPage verifyResult(String key, String value) {
+        registrationResultModal.verifyResult(key, value);
+
+        return this;
+    }
 }

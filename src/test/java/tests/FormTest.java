@@ -2,10 +2,6 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-
 public class FormTest extends TestBase {
     @Test
     void fillFormTest() {
@@ -20,6 +16,7 @@ public class FormTest extends TestBase {
                 subjects[] = new String[] {"Math", "Computer Science"},
                 hobbies[] = new String[] {"Sports", "Music"},
                 fileName = "kitty.jpg",
+                address = "Russia, Moscow",
                 state = "Uttar Pradesh",
                 city = "Lucknow";
 
@@ -32,18 +29,21 @@ public class FormTest extends TestBase {
                         .setBirthDay(dayOfBirth, monthOfBirth, yearOfBirth)
                         .setSubjects(subjects)
                         .setHobbies(hobbies)
-                        .uploadPicture(fileName);
-
-        $("#currentAddress").setValue("Some address");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Lucknow")).click();
-        $("#submit").scrollIntoView(false);
-        $("#submit").click();
-
-       $(".modal-body").shouldHave(text("Natalia Kiseleva"), text("kiselevanat@mail.ru"),
-               text("Female"), text("7894561230"), text("01 May,1997"), text("Maths, Computer Science"),
-               text("Sports, Music"), text("kitty.jpg"), text("Some address"), text("Uttar Pradesh Lucknow"));
+                        .uploadPicture(fileName)
+                        .setAddress(address)
+                        .setState(state)
+                        .setCity(city)
+                        .submit()
+                        .verifyResultsModalAppears()
+                        .verifyResult("Student Name","Natalia Kiseleva")
+                        .verifyResult("Student Email","kiselevanat@mail.ru")
+                        .verifyResult("Gender","Female")
+                        .verifyResult("Mobile","7894561230")
+                        .verifyResult("Date of Birth","01 May,1997")
+                        .verifyResult("Subjects","Maths, Computer Science")
+                        .verifyResult("Hobbies","Sports, Music")
+                        .verifyResult("Picture","kitty.jpg")
+                        .verifyResult("Address","Russia, Moscow")
+                        .verifyResult("State and City","Uttar Pradesh Lucknow");
     }
 }
