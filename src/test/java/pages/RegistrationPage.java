@@ -82,16 +82,16 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setSubjects(String[] values) {
-        for (String i : values) {
-            subjectsInput.setValue(i).pressEnter();
+        for (String subject : values) {
+            subjectsInput.setValue(subject).pressEnter();
         }
 
         return this;
     }
 
     public RegistrationPage setHobbies(String[] values) {
-        for (String i : values) {
-            $(byText(i)).click();
+        for (String hobby : values) {
+            $(byText(hobby)).click();
         }
         return this;
     }
