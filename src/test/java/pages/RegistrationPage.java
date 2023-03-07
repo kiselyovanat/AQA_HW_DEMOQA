@@ -1,9 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import net.bytebuddy.implementation.bytecode.ShiftRight;
 import pages.components.CalendarComponent;
-import pages.components.RegistrationResultModal;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
