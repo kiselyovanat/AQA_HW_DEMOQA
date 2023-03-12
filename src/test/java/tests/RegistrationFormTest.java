@@ -13,7 +13,6 @@ public class RegistrationFormTest extends TestBase {
 
     @Test
     void fillFormTest() {
-
         registrationPage.openPage()
                 .removeFooter()
                 .removeBanner()
