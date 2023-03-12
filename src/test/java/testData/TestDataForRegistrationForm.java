@@ -13,6 +13,7 @@ public class TestDataForRegistrationForm {
             hobbies = {"Sports", "Reading", "Music"},
             months = {"January", "February", "March", "April", "May", "June",
                     "July", "August", "September", "October", "November", "December"};
+
     public static Map<String, String[]> statesAndCities = Map.of(
             "NCR", new String[]{"Delhi", "Gurgaon", "Noida"},
             "Uttar Pradesh", new String[]{"Agra", "Lucknow", "Merrut"},
@@ -20,6 +21,7 @@ public class TestDataForRegistrationForm {
             "Rajasthan", new String[]{"Jaipur", "Jaiselmer"});
 
     public static Faker faker = new Faker(new Locale("en"));
+
     public static String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             email = faker.internet().emailAddress(),
