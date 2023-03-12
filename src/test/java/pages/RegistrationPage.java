@@ -7,8 +7,6 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
-    private CalendarComponent calendarComponent = new CalendarComponent();
-
     private final SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -21,8 +19,8 @@ public class RegistrationPage {
             stateInput = $("#state"),
             cityInput = $("#city"),
             submitButton = $("#submit");
-
     private final String url = "/automation-practice-form";
+    private CalendarComponent calendarComponent = new CalendarComponent();
 
     public RegistrationPage openPage() {
         open(url);
@@ -79,18 +77,15 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setSubjects(String[] values) {
-        for (String subject : values) {
-            subjectsInput.setValue(subject).pressEnter();
-        }
+    public RegistrationPage setSubjects(String subject) {
+        subjectsInput.setValue(subject).pressEnter();
 
         return this;
     }
 
-    public RegistrationPage setHobbies(String[] values) {
-        for (String hobby : values) {
-            $(byText(hobby)).click();
-        }
+    public RegistrationPage setHobbies(String hobby) {
+        $(byText(hobby)).click();
+
         return this;
     }
 
