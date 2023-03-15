@@ -6,7 +6,6 @@ import pages.components.RegistrationResultModal;
 import studentData.StudentData;
 import studentData.TestDataForRegistrationForm;
 
-import static studentData.TestDataForRegistrationForm.*;
 
 public class RegistrationFormTest extends TestBase {
     public RegistrationPage registrationPage = new RegistrationPage();
